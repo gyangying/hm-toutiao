@@ -16,7 +16,8 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道：">
-          <el-select v-model="filterData.channel_id"
+          <my-channel v-model="filterData.channel_id"></my-channel>
+          <!-- <el-select v-model="filterData.channel_id"
             @change="changeChannel"
             clearable
           placeholder="请选择">
@@ -26,7 +27,7 @@
               :label="item.name"
               :value="item.id"
             ></el-option>
-          </el-select>
+          </el-select> -->
         </el-form-item>
         <el-form-item label="日期：">
           <el-date-picker
@@ -88,7 +89,7 @@
 </template>
 
 <script>
-// import MyTest from '@/components/my-test'
+// import MyChannel from '@/components/my-channel'
 import MyBread from '@/components/my-bread'
 export default {
   name: 'app-article',
@@ -113,7 +114,7 @@ export default {
     }
   },
   created () {
-    this.getChannelOptions()
+    // this.getChannelOptions()
     this.getArticles()
   },
   methods: {
@@ -135,11 +136,11 @@ export default {
     toEditArticle (id) {
       this.$router.push(`/publish?id=${id}`)
     },
-    changeChannel () {
-      if (this.filterData.channel_id === '') {
-        this.filterData.channel_id = null
-      }
-    },
+    // changeChannel () {
+    //   if (this.filterData.channel_id === '') {
+    //     this.filterData.channel_id = null
+    //   }
+    // },
     changeDate (value) {
       if (value) {
         this.filterData.begin_pubdate = value[0] 
@@ -157,10 +158,10 @@ export default {
       this.filterData.page = newPage
       this.getArticles()
     },
-    async getChannelOptions () {
-      const res = await this.$http.get('channels')
-      this.channelOptions = res.data.data.channels
-    },
+    // async getChannelOptions () {
+    //   const res = await this.$http.get('channels')
+    //   this.channelOptions = res.data.data.channels
+    // },
     async getArticles () {
       const res = await this.$http.get('articles', { params: this.filterData })
       this.articles = res.data.data.results
