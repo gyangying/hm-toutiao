@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     delArticle (id) {
-      this.$confirm('删吗','说你呢',{
+      this.$confirm('删吗', '说你呢', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
