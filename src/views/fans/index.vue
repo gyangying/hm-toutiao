@@ -36,7 +36,7 @@ export default {
   name: 'app-fans',
   data () {
     return {
-      activeName: 'picture',
+      activeName: 'list',
       fansList: [],
       total: 0,
       reqParams: {
